@@ -27,7 +27,7 @@ def process_data():
         except Exception as e:
             print(f"Error in the ECG XML Reader: {str(e)}")
 
-        x = ecg_data_np = np.array(list(ecg_data.values()))
+        x = np.array(list(ecg_data.values()))
         y = mapping_dict[processed_meta_df.iloc[idx]['DischargeTo_Agg']]
         
         assert x.shape == (8, 5000), f"Expected shape (8, 5000), but got {x.shape} in {xml_file_path}"
@@ -38,7 +38,7 @@ def process_data():
         labels.append(y)
 
     assert len(np_file_paths) == len(labels)
-    data_pairs = pd.DataFrame({'np_file_paths': np_file_paths, 'labels': labels})
+    data_pairs = pd.DataFrame({'np_file_path': np_file_paths, 'label': labels})
 
     # Save the DataFrame as a CSV file
     data_pairs.to_csv(processed_meta_dir / 'data_pairs.csv', index=False)
