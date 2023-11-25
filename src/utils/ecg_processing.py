@@ -18,7 +18,7 @@ class ECGXMLReader:
     def __init__(self, path, augmentLeads=False):
         try: 
             with open(path, 'rb') as xml:
-                self.ECG = xmltodict.parse(xml.read().decode('utf8'))
+                self.ECG = xmltodict.parse(xml.read().decode('ISO-8859-1'))
             
             self.augmentLeads           = augmentLeads
             self.path                   = path
