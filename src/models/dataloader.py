@@ -17,7 +17,8 @@ class PatientDataset(Dataset):
         return len(self.data_pairs_df)
 
     def __getitem__(self, idx):
-        x = self.data_pairs_df.iloc[idx]['np_file_path']
+        np_file_path = self.data_pairs_df.iloc[idx]['np_file_path']
+        x = np.load(np_file_path)
         y = self.data_pairs_df.iloc[idx]['label']
 
         return x, y
