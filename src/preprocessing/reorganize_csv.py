@@ -31,7 +31,7 @@ def reorganize_data():
     # Filter patients who passed away
     df = df[df['DischargeTo_Agg'] != 'exitus']
 
-    df.to_csv('../data/processed/meta/IKEM_processed.csv', index=False, encoding='utf-8-sig')
+    df.to_csv('../../data/processed/meta/IKEM_processed.csv', index=False, encoding='utf-8-sig')
 
 
 if __name__ == '__main__':
